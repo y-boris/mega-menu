@@ -1,4 +1,6 @@
 import { NavLink } from 'react-router-dom';
+import Container from './Container';
+import DropdownContent from './DropdownContent';
 
 const MenuItem = ({ label, href, children }) => {
   return (
@@ -11,7 +13,13 @@ const MenuItem = ({ label, href, children }) => {
           {label}
         </NavLink>
       </div>
-      {children && <div className="dropdown">dropdown content</div>}
+      {children && (
+        <div className="dropdown">
+          <Container>
+            <DropdownContent submenuscontent={children} />
+          </Container>
+        </div>
+      )}
     </li>
   );
 };
