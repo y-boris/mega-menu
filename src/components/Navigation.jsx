@@ -5,6 +5,8 @@ import logo from '../assets/logoipsum.svg';
 import UserProfile from './UserProfile';
 import { AlignJustify } from 'lucide-react';
 
+import MegaMenu from './MegaMenu';
+
 const Navigation = () => {
   return (
     <header className="nav__header">
@@ -20,6 +22,10 @@ const Navigation = () => {
           <Link className="logo__link" to={'/'}>
             <img src={logo} />
           </Link>
+
+          <div className="hidden md:block">
+            <MegaMenu />
+          </div>
 
           <UserProfile />
         </div>
