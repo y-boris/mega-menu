@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Container from './Container';
 
@@ -6,8 +7,11 @@ import UserProfile from './UserProfile';
 import { AlignJustify } from 'lucide-react';
 
 import MegaMenu from './MegaMenu';
+import MobileNavigationDrawer from './MobileNavigationDrawer';
 
 const Navigation = () => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   return (
     <header className="nav__header">
       <Container>
@@ -15,6 +19,7 @@ const Navigation = () => {
           <button
             className="menu_icon md:hidden"
             aria-haspopup="true"
+            onClick={() => setIsDrawerOpen(true)}
           >
             {/* Mobile Hamburger menu */}
             <AlignJustify />
@@ -28,6 +33,12 @@ const Navigation = () => {
           </div>
 
           <UserProfile />
+
+          <div className="md:hidden absolute">
+            <MobileNavigationDrawer
+              {...{ isDrawerOpen, setIsDrawerOpen }}
+            />
+          </div>
         </div>
       </Container>
     </header>
