@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Container from './Container';
 
@@ -11,12 +11,14 @@ import MobileNavigationDrawer from './MobileNavigationDrawer';
 
 const Navigation = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const drawerButtonRef = useRef(null);
 
   return (
     <header className="nav__header">
       <Container>
         <div className="toolbar">
           <button
+            ref={drawerButtonRef}
             className="menu_icon md:hidden"
             aria-haspopup="true"
             onClick={() => setIsDrawerOpen(true)}
@@ -35,9 +37,7 @@ const Navigation = () => {
           <UserProfile />
 
           <div className="md:hidden absolute">
-            <MobileNavigationDrawer
-              {...{ isDrawerOpen, setIsDrawerOpen }}
-            />
+            <MobileNavigationDrawer {...{ isDrawerOpen, setIsDrawerOpen, drawerButtonRef }} />
           </div>
         </div>
       </Container>
