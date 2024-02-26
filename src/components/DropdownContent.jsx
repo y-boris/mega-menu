@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const DropdownContent = ({ submenuscontent }) => {
+const DropdownContent = ({ submenuscontent, setIsDrawerOpen }) => {
   return (
     <div className="dropdown_content">
       {submenuscontent.map((item, index) => (
@@ -10,7 +10,12 @@ const DropdownContent = ({ submenuscontent }) => {
             <h4>{item.heading}</h4>
             <ul>
               {item.submenu.map(({ label, href }, index) => (
-                <li key={index}>
+                <li
+                  key={index}
+                  onClick={() => {
+                    setIsDrawerOpen && setIsDrawerOpen(false);
+                  }}
+                >
                   <Link to={href}>{label}</Link>
                 </li>
               ))}

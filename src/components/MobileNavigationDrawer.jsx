@@ -24,7 +24,7 @@ const MobileNavigationDrawer = ({ isDrawerOpen, setIsDrawerOpen }) => {
           </button>
         </div>
         <div>
-          <MegaMenu handleToggle={handleToggle} clicked={clicked} />
+          <MegaMenu handleToggle={handleToggle} clicked={clicked} setIsDrawerOpen={setIsDrawerOpen} />
         </div>
       </div>
     </div>
