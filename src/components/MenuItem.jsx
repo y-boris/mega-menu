@@ -17,13 +17,19 @@ const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen }) 
           {label}
         </NavLink>
         {children && (
-          <button className="md:hidden" onClick={onToggle}>
+          <button
+            className="md:hidden"
+            onClick={onToggle}
+            aria-label="Toggle dropdown"
+            aria-haspopup="menu"
+            aria-expanded={active ? 'true' : 'false'}
+          >
             {active ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
           </button>
         )}
       </div>
       {children && (
-        <div className={`dropdown ${active ? 'h-auto' : 'h-0 overflow-hidden md:h-auto'}`}>
+        <div className={`dropdown ${active ? 'h-auto' : 'h-0 overflow-hidden md:h-auto'}`} role="menu">
           <Container>
             <DropdownContent submenuscontent={children} setIsDrawerOpen={setIsDrawerOpen} />
           </Container>
