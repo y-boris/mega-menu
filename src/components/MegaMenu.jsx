@@ -1,14 +1,19 @@
 import { menuData } from '../menuData';
 import MenuItem from './MenuItem';
 
-const MegaMenu = () => {
+const MegaMenu = ({ handleToggle, clicked }) => {
   return (
     <div className="nav__container">
       <nav>
         <ul>
           {menuData.map(({ label, href, children }, index) => {
             return (
-              <MenuItem key={index} {...{ label, href, children }} />
+              <MenuItem
+                key={index}
+                {...{ label, href, children }}
+                onToggle={() => handleToggle && handleToggle(index)}
+                active={clicked === index}
+              />
             );
           })}
         </ul>
