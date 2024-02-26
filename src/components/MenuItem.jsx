@@ -4,6 +4,12 @@ import DropdownContent from './DropdownContent';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen }) => {
+  const handleClick = () => {
+    // Blur the active element to lose focus
+    const activeElement = document.activeElement;
+    activeElement.blur();
+  };
+
   return (
     <li>
       <div className="nav_item_content">
@@ -12,6 +18,7 @@ const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen }) 
           className={({ isActive }) => (isActive ? 'active' : '')}
           onClick={() => {
             setIsDrawerOpen && setIsDrawerOpen(false);
+            handleClick();
           }}
         >
           {label}
@@ -31,7 +38,7 @@ const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen }) 
       {children && (
         <div className={`dropdown ${active ? 'h-auto' : 'h-0 overflow-hidden md:h-auto'}`} role="menu">
           <Container>
-            <DropdownContent submenuscontent={children} setIsDrawerOpen={setIsDrawerOpen} />
+            <DropdownContent submenuscontent={children} setIsDrawerOpen={setIsDrawerOpen} handleClick={handleClick} />
           </Container>
         </div>
       )}
